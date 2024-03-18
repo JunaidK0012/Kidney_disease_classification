@@ -1,0 +1,11 @@
+tensorflow == 2.12.0
+pandas
+dvc
+mlflow == 2.2.2
+notebook
+python-box == 6.0.2
+pyYAML
+joblib
+Flask
+ensure==1.0.2
+#-e .
