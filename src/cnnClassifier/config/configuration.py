@@ -1,6 +1,6 @@
 from cnnClassifier.constants import *
 from cnnClassifier.utils.common import read_yaml,create_directories
-from cnnClassifier.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig,TrainingModelConfig
+from cnnClassifier.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig,TrainingModelConfig,EvaluationConfig
 import os
 
 class ConfigurationManager:
@@ -67,4 +67,19 @@ class ConfigurationManager:
 
         return training_config
 
+    def get_model_evaluation_config(self) -> EvaluationConfig:
+        training = self.config.training
+        evaluation = self.config.evaluation
+
+        evaluation_config = EvaluationConfig(
+            path_of_model = training.trained_model_path,
+            training_data = os.path.join(self.config.data_ingestion.unzip_dir,"kidney-ct-scan-image"),
+            params_image_size = self.params.IMAGE_SIZE,
+            params_batch_size = self.params.BATCH_SIZE,
+            params_classes = self.params.CLASSES,
+            all_params = self.params,
+            mlflow_uri = evaluation.mlflow_uri
+        )
+
+        return evaluation_config
 

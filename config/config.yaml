@@ -17,3 +17,9 @@ prepare_base_model:
 training:
   root_dir: artifacts/training
   trained_model_path: artifacts/training/model.h5
+
+evaluation:
+  mlflow_uri: https://dagshub.com/JunaidK0012/Kidney_disease_classification.mlflow
+
+
+

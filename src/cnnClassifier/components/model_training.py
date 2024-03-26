@@ -20,7 +20,7 @@ class Training:
 
     def image_generater(self):
         self.train_ds = keras.utils.image_dataset_from_directory(
-            directory = 'artifacts\data_ingestion\kidney-ct-scan-image',
+            directory = self.config.training_data,
             validation_split=0.2,
             subset="training",
             seed=123,
@@ -29,7 +29,7 @@ class Training:
         )
 
         self.val_ds = keras.utils.image_dataset_from_directory(
-            directory = 'artifacts\data_ingestion\kidney-ct-scan-image',
+            directory = self.config.training_data,
             validation_split=0.2,
             subset="validation",
             seed=123,
