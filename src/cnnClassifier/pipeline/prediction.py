@@ -6,7 +6,7 @@ import numpy as np
 
 
 
-class Prediction:
+class PredictionPipeline:
     def __init__(self):
         pass
 
@@ -14,11 +14,13 @@ class Prediction:
         model = keras.models.load_model(os.path.join('artifacts','training','model.h5'))
         image = keras.utils.load_img(image_path,target_size=image_size)
         input_arr = keras.utils.img_to_array(image)
-        input_arr = np.array([input_arr]) 
         input_arr = input_arr / 255
-        predictions = model.predict(input_arr)
-        predicted_class = np.argmax(predictions)
+        input_arr = np.expand_dims(input_arr, axis = 0)
+        p = model.predict(input_arr)
+        result = np.argmax(p,axis=1)
+        
+        
 
-        return predicted_class
+        return result
     
     
