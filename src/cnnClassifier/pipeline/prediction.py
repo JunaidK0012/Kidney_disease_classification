@@ -17,6 +17,7 @@ class PredictionPipeline:
         input_arr = input_arr / 255
         input_arr = np.expand_dims(input_arr, axis = 0)
         p = model.predict(input_arr)
+        print(p)
         result = np.argmax(p,axis=1)
         
         

@@ -59,9 +59,27 @@
             max-width: 100%;
             height: auto;
         }
-        label, input[type="submit"] {
+        label {
             padding: 15px 25px;
             font-size: 1.2em;
+        }
+        input[type="submit"] {
+            padding: 15px 25px;
+            font-size: 1.2em;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4743b8;
+        }
+
+        input[type="submit"]:active {
+            background-color: #260086;
+            transform: scale(0.95);
         }
 
         .card {
@@ -88,7 +106,7 @@
         <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
             <label for="image-upload">Upload Image</label>
             <input type="file" id="image-upload" name="image" accept="image/*" onchange="loadFile(event)">
-            <img id="output"/>
+            <img id="output" style="width: 224px; height: 224px;" />
             <input type="submit" value="Predict" id="submit" disabled>
         </form>
         {% if result is not none %}
