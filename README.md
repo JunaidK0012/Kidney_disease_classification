@@ -32,6 +32,40 @@ Kidney_disease_classification/
 ├── .github/                # CI (workflows), PR and issue templates
 │   └── workflows/
 ├── .dvc/                   # DVC metadata (already present)
+├── config/
+│   └── config.yaml
+├── research/               # experiments
+│   ├── 01_data_ingestion.ipynb
+│   └── trials.ipynb
+│
+├── src/cnnClassifier                  # source code 
+│   ├── __init__.py
+│   ├── components/
+│   │   ├── __init__.py
+│   │   └── data_ingestion.py
+│   │   └── model_evaluation_mlflow.py
+│   │   └── model_training.py
+│   │   └── prepare_base_model.py
+│   ├── config/             # configuration loading utilities
+│   │   ├── __init__.py
+│   │   └── configuration.py
+│   ├── constants/             
+│   │   ├── __init__.py
+│   ├── entity/
+│   │   ├── __init__.py
+│   │   └── config_entity.py
+│   ├── pipeline/
+│   │   ├── __init__.py         
+│   │   ├── prediction.py        
+│   │   ├── stage_01_data_ingestion.py
+│   │   ├── stage_02_prepare_base_model.py
+│   │   ├── stage_03_model_training.py
+│   │   ├── stage_04_model_evaluation.py
+│   ├── utils/              # logging, helpers, visualization
+│   │   ├── __init__.py 
+│   │   └── common.py
+├── app.py              # flask entrypoint 
+├── templates/          # HTML templates
 ├── .dvcignore
 ├── dvc.yaml                # DVC pipeline (already present)
 ├── dvc.lock                # DVC lockfile (already present)
@@ -39,67 +73,8 @@ Kidney_disease_classification/
 ├── .gitignore
 ├── Dockerfile              # container image (already present)
 ├── README.md
-├── LICENSE
 ├── requirements.txt
-├── setup.py
-├── pyproject.toml          # optional (packaging, lint/format config)
-├── Makefile                # handy shortcuts: make data, make train, make test
-│
-├── data/                   # small control files, DVC tracks actual data
-│   ├── README.md
-│   ├── raw/                # immutable raw dataset (DVC-tracked)
-│   ├── interim/            # intermediate, partially processed
-│   └── processed/          # final datasets ready for modeling
-│
-├── models/                 # trained model artefacts (DVC-tracked)
-│   ├── checkpoints/
-│   └── production/         # final serialized model(s)
-│
-├── notebooks/              # exploratory analysis and EDA notebooks
-│   ├── 01-eda.ipynb
-│   └── 02-model-experiments.ipynb
-│
-├── research/               # experiments, paper notes (already present)
-│   └── ...
-│
-├── src/                    # source code (package)
-│   ├── __init__.py
-│   ├── config/             # configuration loading utilities
-│   │   └── config.py
-│   ├── data/               # data loading & preprocessing
-│   │   ├── make_dataset.py
-│   │   └── preprocess.py
-│   ├── features/           # feature engineering
-│   │   └── build_features.py
-│   ├── models/             # model definitions & training loops
-│   │   ├── cnn_classifier.py        # move/merge from src/cnnClassifier
-│   │   └── train.py                 # orchestrates training
-│   ├── evaluation/         # evaluation metrics and plots
-│   │   └── evaluate.py
-│   ├── utils/              # logging, helpers, visualization
-│   │   └── utils.py
-│   └── cli.py              # command-line entrypoints (optional)
-│
-├── src/cnnClassifier/      # (current code) keep as package while refactoring
-│   └── ...                 # short-term: move relevant files into src/models
-│
-├── app/                    # small web app / API (already have app.py)
-│   ├── app.py              # flask/fastapi/streamlit entrypoint (you have app.py)
-│   └── templates/          # HTML templates (already present)
-│
-├── scripts/                # helper scripts (dataset download, runs)
-│   ├── download_data.sh
-│   └── run_training.sh
-│
-├── tests/                  # unit + integration tests
-│   ├── test_data.py
-│   └── test_models.py
-│
-├── results/                # local generated plots, reports (ignore in git)
-│   └── figures/
-│
-└── docs/                   # documentation (usage, design decisions)
-    └── architecture.md
+├── setup.py 
 
 ```
 
