@@ -8,20 +8,21 @@ This project aims to support early disease detection using AI-driven medical ima
 ## 🚀 Features  
 - 🧠 **CNN-based Image Classifier** built with TensorFlow/Keras  
 - 📊 Trains on kidney CT images to predict CKD vs Normal  
-- 📈 Visualizations of training performance  
 - 🖼️ Generates predictions with probability scores  
 
 ---
 
-## 🛠️ Tech Stack  
-**Languages & Libraries**  
-- Python, NumPy, Pandas, Matplotlib, Seaborn  
-- TensorFlow, Keras, Scikit-learn, OpenCV  
 
 **ML/DL Techniques**  
 - Convolutional Neural Networks (CNNs)  
 - Data Augmentation (ImageDataGenerator)  
-- Transfer Learning (optional, if used)  
+- Transfer Learning (VGG16)  
+
+**MLOPS Techniques**  
+- Production grade modular coding
+- MlFlow for experiment tracking and model registry
+- DVC for data versioning
+- Containerized the app using docker
 
 ---
 
